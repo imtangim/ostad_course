@@ -19,7 +19,7 @@ void main() {
   }
 }
 
-// output:
+// output:module
 // Student's average grade: 80
 // Rounded average: 80
 // Passed
