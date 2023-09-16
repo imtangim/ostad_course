@@ -42,7 +42,7 @@ class MyHomePage extends StatelessWidget {
       body: ListView.builder(
         itemCount: cartItem.length,
         itemBuilder: (context, index) {
-          return const Padding(
+          return Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -54,7 +54,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 SizedBox(width: 30),
                 Text(
-                  "Apples",
+                  cartItem[index],
                   style: TextStyle(
                     fontSize: 17,
                   ),
