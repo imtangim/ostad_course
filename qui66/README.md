@@ -1,2 +1,2 @@
 
-![App Screenshot](lib\ss\Screenshot_1694884925.png) Homepage
+![App Screenshot](./asset/Screenshot_1694884925.png) Homepage
