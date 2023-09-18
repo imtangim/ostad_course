@@ -39,30 +39,21 @@ class MyHomePage extends StatelessWidget {
           )
         ],
       ),
-      body: ListView.builder(
-        itemCount: cartItem.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(
-                  Icons.shopping_bag,
-                  color: Colors.grey,
-                  size: 35,
-                ),
-                SizedBox(width: 30),
-                Text(
-                  cartItem[index],
-                  style: TextStyle(
-                    fontSize: 17,
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
+      body: SizedBox(
+        width: double.maxFinite,
+        height: MediaQuery.of(context).size.height,
+        child: ListView.builder(
+          itemCount: cartItem.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                leading: const Icon(Icons.shopping_basket_rounded),
+                title: Text(cartItem[index].toString()),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
