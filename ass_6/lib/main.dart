@@ -77,90 +77,117 @@ class _MyHomePageState extends State<MyHomePage> {
         foregroundColor: Colors.white,
         title: const Text("Photo Gallery"),
         centerTitle: true,
+        toolbarHeight: 40,
       ),
-      body: FutureBuilder(
-        future: fetchimage(),
-        builder: (context, snapshot) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Welcome to my photo gallery",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+      body: Stack(
+        children: [
+          FutureBuilder(
+            future: fetchimage(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: const CircularProgressIndicator());
+              } else {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 2,
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                const TextField(
-                  decoration: InputDecoration(
-                    hintText: "Search for photos..",
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Expanded(
-                  child: GridView.builder(
-                    itemCount: url.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                    ),
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.4,
-                          width: MediaQuery.of(context).size.height * 0.7,
-                          child: Column(
-                            children: [
-                              Image(
-                                // height: 100,
-                                width: 100,
-                                fit: BoxFit.contain,
-                                image: NetworkImage(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Welcome to my photo gallery",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          hintText: "Search for photos..",
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Expanded(
+                        child: GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          shrinkWrap: true,
+                          itemCount: url.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                          ),
+                          itemBuilder: (context, index) {
+                            return SizedBox(
+                              // width: MediaQuery.of(context).size.height * 0.7,
+                              child: Column(
+                                children: [
+                                  Image(
+                                    // height: 100,
+                                    width: 100,
+                                    fit: BoxFit.contain,
+                                    image: NetworkImage(
+                                      url[index],
+                                    ),
+                                  ),
+                                  Text(
+                                    "Photo $index",
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 3,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage: NetworkImage(
                                   url[index],
                                 ),
                               ),
-                              Text(
-                                "Photo $index",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )
-                            ],
-                          ),
+                              title: Text("Photo $index"),
+                              subtitle: Text("Description for Photo $index"),
+                            );
+                          },
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   ),
+                );
+              }
+            },
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: FloatingActionButton(
+                backgroundColor: Colors.blue,
+                shape: const CircleBorder(),
+                onPressed: () {},
+                child: const Icon(
+                  Icons.upload,
+                  color: Colors.white,
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                            url[index],
-                          ),
-                        ),
-                        title: Text("Photo $index"),
-                        subtitle: Text("Description for Photo $index"),
-                      );
-                    },
-                  ),
-                )
-              ],
+              ),
             ),
-          );
-        },
+          )
+        ],
       ),
     );
   }
