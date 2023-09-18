@@ -75,7 +75,12 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
-        title: const Text("Photo Gallery"),
+        title: const Text(
+          "Photo Gallery",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         toolbarHeight: 40,
       ),
@@ -85,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             future: fetchimage(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: const CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else {
                 return Padding(
                   padding: const EdgeInsets.symmetric(
@@ -95,6 +100,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 10,
+                      ),
                       const Text(
                         "Welcome to my photo gallery",
                         style: TextStyle(
@@ -125,25 +133,35 @@ class _MyHomePageState extends State<MyHomePage> {
                             crossAxisCount: 3,
                           ),
                           itemBuilder: (context, index) {
-                            return SizedBox(
-                              // width: MediaQuery.of(context).size.height * 0.7,
-                              child: Column(
-                                children: [
-                                  Image(
-                                    // height: 100,
-                                    width: 100,
-                                    fit: BoxFit.contain,
-                                    image: NetworkImage(
-                                      url[index],
+                            return GestureDetector(
+                              onTap: () {
+                                final snackBar = SnackBar(
+                                  content: Text('Photo $index'),
+                                  duration: const Duration(seconds: 1),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              },
+                              child: SizedBox(
+                                // width: MediaQuery.of(context).size.height * 0.7,
+                                child: Column(
+                                  children: [
+                                    Image(
+                                      // height: 100,
+                                      width: 100,
+                                      fit: BoxFit.contain,
+                                      image: NetworkImage(
+                                        url[index],
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    "Photo $index",
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
-                                ],
+                                    Text(
+                                      "Photo $index",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -155,6 +173,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           itemCount: 3,
                           itemBuilder: (context, index) {
                             return ListTile(
+                              onTap: () {
+                                final snackBar = SnackBar(
+                                  content: Text('Photo $index'),
+                                  duration: const Duration(seconds: 1),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              },
                               leading: CircleAvatar(
                                 backgroundImage: NetworkImage(
                                   url[index],
@@ -175,11 +201,17 @@ class _MyHomePageState extends State<MyHomePage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(40.0),
               child: FloatingActionButton(
                 backgroundColor: Colors.blue,
                 shape: const CircleBorder(),
-                onPressed: () {},
+                onPressed: () {
+                  const snackBar = SnackBar(
+                    content: Text('Photo Uploaded'),
+                    duration: Duration(seconds: 1),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
                 child: const Icon(
                   Icons.upload,
                   color: Colors.white,
