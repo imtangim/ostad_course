@@ -58,51 +58,57 @@ class _MyHomePageState extends State<MyHomePage> {
                     Expanded(
                       child: TextButton(
                         onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                elevation: 10,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                backgroundColor: Colors.white,
-                                title: const Text(
-                                  "Congratulation!",
-                                ),
-                                content: Text(
-                                  "You've bought Product ${index + 1}",
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                actionsPadding: const EdgeInsets.all(0),
-                                actionsAlignment: MainAxisAlignment.end,
-                                actions: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8.0),
-                                    child: TextButton(
-                                        style: TextButton.styleFrom(
-                                          shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(10),
-                                            ),
-                                          ),
+                          _counter >= 5
+                              ? showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      elevation: 10,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      backgroundColor: Colors.white,
+                                      title: const Text(
+                                        "Congratulation!",
+                                      ),
+                                      content: Text(
+                                        "You've bought 5 Product",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
+                                      ),
+                                      actionsPadding: const EdgeInsets.all(0),
+                                      actionsAlignment: MainAxisAlignment.end,
+                                      actions: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8.0),
+                                          child: TextButton(
+                                              style: TextButton.styleFrom(
+                                                shape:
+                                                    const RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(10),
+                                                  ),
+                                                ),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const Text(
+                                                "Ok",
+                                                style: TextStyle(
+                                                  color: Colors.blue,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              )),
                                         ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text(
-                                          "Ok",
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        )),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
+                                      ],
+                                    );
+                                  },
+                                )
+                              : "";
                           setState(() {
                             _counter += 1;
                           });
