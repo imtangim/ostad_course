@@ -28,7 +28,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Map cart = {};
   int _counter = 0;
+  @override
+  void initState() {
+    for (var i = 0; i < 30; i++) {
+      cart["Product ${i + 1}"] = 0;
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 trailing: Column(
                   children: [
                     Text(
-                      "Counter: $_counter",
+                      "Counter: ${cart["Product ${index + 1}"]}",
                       style: const TextStyle(
                         color: Colors.black,
                       ),
@@ -58,7 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     Expanded(
                       child: TextButton(
                         onPressed: () {
-                          _counter >= 5
+                          setState(() {
+                            cart["Product ${index + 1}"] += 1;
+                          });
+                          print(cart);
+                          cart["Product ${index + 1}"] == 5
                               ? showDialog(
                                   context: context,
                                   builder: (context) {
@@ -72,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         "Congratulation!",
                                       ),
                                       content: Text(
-                                        "You've bought 5 Product",
+                                        "You've bought 5 Product ${index + 1}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyLarge,
@@ -109,9 +122,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                   },
                                 )
                               : "";
-                          setState(() {
-                            _counter += 1;
-                          });
                         },
                         style: TextButton.styleFrom(
                           fixedSize: const Size(100, 30),
@@ -147,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return MyWidget(counter: _counter);
+                        return MyWidget(counter: cart);
                       },
                     ),
                   );
@@ -166,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class MyWidget extends StatefulWidget {
-  final int counter;
+  final Map counter;
   const MyWidget({super.key, required this.counter});
 
   @override
@@ -174,6 +184,16 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
+  num _sum = 0;
+
+  @override
+  void initState() {
+    for (var value in widget.counter.values) {
+      _sum += value;
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -185,7 +205,7 @@ class _MyWidgetState extends State<MyWidget> {
       ),
       body: Center(
         child: Text(
-          "Total Product: ${widget.counter}",
+          "Total Product: ${_sum}",
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
