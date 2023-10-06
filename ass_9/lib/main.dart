@@ -38,6 +38,14 @@ class _MyHomePageState extends State<MyHomePage> {
     "Prd2": {"total": 1, "total_amount": 30, "price": 30},
     "Prd3": {"total": 1, "total_amount": 43, "price": 43},
   };
+  void _showSnackbar(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Congratulations! Your order has been checked out.'),
+        duration: Duration(seconds: 3), // Snackbar duration
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -694,7 +702,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                _showSnackbar(context);
+              },
               child: Text("CHECK OUT"),
             )
           ],
