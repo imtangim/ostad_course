@@ -21,8 +21,7 @@ Screenshots are taken sequentially. If you start from top-left to right then you
 
 Here're some of the project's best features:
 
-- Firebase Authetication
-- Firebase Firestore
+- Simple and most basic task manager using List and Map
 
 <h2>💻 Built with</h2>
 
