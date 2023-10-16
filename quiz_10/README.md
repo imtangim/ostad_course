@@ -1,16 +1,34 @@
-# quiz_10
+<h1 align="center" id="title">Assignment - 10: Task Manager</h1>
 
-A new Flutter project.
+<p align="center"><img src="https://socialify.git.ci/imtangim/ostad_course/image?description=1&descriptionEditable=This%20repository%20represent%20all%20my%20learning%20from%20ostad.%0A&language=1&name=1&owner=1&pattern=Solid&pulls=1&stargazers=1&theme=Dark" alt="project-image"></p>
 
-## Getting Started
+<p id="description">
+Screenshots are taken sequentially. If you start from top-left to right then you will get the sequence.
 
-This project is a starting point for a Flutter application.
+</p>
 
-A few resources to get you started if this is your first Flutter project:
+<h2>Project Screenshots:</h2>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<img src="./assets/1.png" alt="project-screenshot" height="400"> <img src="./assets/2.png" alt="project-screenshot" height="400"> <img src="./assets/3.png" alt="project-screenshot" height="400">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h2>🚀 Resume</h2>
+
+[![Video](https://img.youtube.com/vi/sMssfvnuQF0/maxresdefault.jpg)](https://www.youtube.com/watch?v=sMssfvnuQF0)
+
+[Tangim Haque - Portfolio](https://tangim.me)
+
+<h2>🧐 Features</h2>
+
+Here're some of the project's best features:
+
+- Selection using 2 List - <br> 1. item holder ,<br> 2. Represting the boolean value of item selected or not
+
+<h2>💻 Built with</h2>
+
+Technologies used in the project:
+
+- Flutter
+- API - github, youtube
+<h2>💖Like my work?</h2>
+
+Contact with me<p><a href="https://www.youtube.com/watch?v=sMssfvnuQF0">Subscribe my Channel ❤ </a></p>
