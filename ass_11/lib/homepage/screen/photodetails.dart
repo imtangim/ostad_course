@@ -17,7 +17,7 @@ class _PhotoDetailState extends State<PhotoDetail> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Text Gallert App",
+          "Photo Details",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.blue,

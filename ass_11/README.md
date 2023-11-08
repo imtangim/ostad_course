@@ -1,4 +1,3 @@
 ## ScreenShots
 
-<img src="./assets/Screenshot_1699360485.png" height="600" alt="project-screenshot"> <img src="./assets/Screenshot_1699360479.png" alt="project-screenshot" height="600">'
-
+<img src="./assets/Screenshot_1699463244.png" alt="project-screenshot" height="500"> <img src="./assets/Screenshot_1699463241.png" height="500" alt="project-screenshot">

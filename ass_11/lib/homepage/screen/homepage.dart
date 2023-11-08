@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Text Gallert App",
+          "Photo Gallery App",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.blue,
